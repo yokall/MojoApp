@@ -57,33 +57,3 @@ get '/logout' => sub {
 };
 
 app->start;
-__DATA__
-
-@@ index.html.ep
-% layout 'default';
-%= form_for index => begin
-	% if (param 'user') {
-		<b>Wrong name or password, please try again.</b><br>
-	% }
-	Name:<br>
-	%= text_field 'user'
-	<br>Password:<br>
-	%= password_field 'pass'
-	<br>
-	%= submit_button 'Login'
-% end
-
-@@ protected.html.ep
-% layout 'default';
-% if (my $msg = flash 'message') {
-	<b><%= $msg %></b><br>
-% }
-Welcome <%= session 'user' %>.<br>
-%= link_to Logout => 'logout'
-
-@@ layouts/default.html.ep
-<!DOCTYPE html>
-<html>
-<head><title>Login Manager</title></head>
-<body><%= content %></body>
-</html>
