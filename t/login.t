@@ -1,12 +1,10 @@
 use Test::More;
 use Test::Mojo;
 
-# Include application
-use FindBin;
-require "$FindBin::Bin/../mojoapp.pl";
+# Load application class
+my $t = Test::Mojo->new('MojoApp');
 
 # Allow 302 redirect responses
-my $t = Test::Mojo->new;
 $t->ua->max_redirects(1);
 
 # Test if the HTML login form exists
